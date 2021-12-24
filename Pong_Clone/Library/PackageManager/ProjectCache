@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637759594071844604
-    m_Hash: 238244261
+      ticks: 637759663939509623
+    m_Hash: 1925581752
   m_LockFileStatus:
     m_FilePath: C:/Dev/Pong_Clone/Pong_Clone/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637759595077038896
-    m_Hash: 201114752
+      ticks: 637759663939509623
+    m_Hash: 3207447393
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -41,6 +41,18 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 1.0.15-preview.1
+        - 1.0.15-preview.2
+        - 1.0.15-preview.3
+        - 1.0.15-preview.4
+        - 1.0.15-preview.5
+        - 1.0.16-preview
+        - 1.0.16-preview.1
+        - 1.0.16-preview.2
+        - 2.0.0-preview.1
+        - 2.0.0-preview.2
+        - 2.1.0-preview.1
+        - 2.1.0-preview.2
         - 5.0.9
         compatible:
         - 5.0.9
@@ -128,6 +140,8 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 1.0.0-preview
+        - 1.0.1-preview
         - 4.0.1
         compatible:
         - 4.0.1
@@ -182,6 +196,10 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 1.0.0-preview.1
+        - 1.0.0-preview.2
+        - 1.0.0-preview.3
+        - 1.1.0-preview.1
         - 4.1.2
         compatible:
         - 4.1.2
@@ -312,6 +330,13 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 1.0.10-preview.2
+        - 1.0.11-preview
+        - 1.0.12-preview
+        - 1.0.12-preview.1
+        - 1.0.14-preview.2
+        - 2.0.0-preview.4
+        - 2.0.0-preview.5
         - 5.1.6
         compatible:
         - 5.1.6
@@ -446,9 +471,21 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 1.2.3-preview
+        - 1.2.4-preview
+        - 1.2.6
+        - 1.2.7
+        - 1.2.9
+        - 1.2.11
+        - 1.2.15
+        - 1.2.16
         - 1.15.4
+        - 2.0.0-preview.6
+        - 2.0.0-preview.8
         compatible:
         - 1.15.4
+        - 2.0.0-preview.6
+        - 2.0.0-preview.8
         verified: 1.15.4
       dependencies:
       - name: com.unity.nuget.newtonsoft-json
@@ -764,6 +801,26 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 0.1.2
+        - 1.0.21
+        - 1.0.23
+        - 1.0.25
+        - 1.0.26
+        - 1.1.0
+        - 1.2.0
+        - 1.2.1
+        - 1.2.2
+        - 1.2.3
+        - 1.2.4
+        - 1.3.0-preview
+        - 1.3.0
+        - 1.4.0-preview.1b
+        - 1.4.0-preview.2a
+        - 1.4.0-preview.3a
+        - 1.4.0
+        - 1.4.1-preview.1
+        - 2.0.0
+        - 2.0.1-preview.1
         - 3.0.6
         compatible:
         - 3.0.6
@@ -2861,10 +2918,32 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 0.0.12-preview.2
+        - 0.0.12-preview.5
+        - 0.0.12-preview.8
+        - 0.0.12-preview.10
+        - 0.0.12-preview.11
+        - 0.0.12-preview.13
+        - 0.0.12-preview.17
+        - 0.0.12-preview.19
+        - 0.0.12-preview.20
+        - 1.0.0-preview.1
+        - 1.0.1
         - 1.1.0
         - 1.2.1
         - 1.2.5
         compatible:
+        - 0.0.12-preview.2
+        - 0.0.12-preview.5
+        - 0.0.12-preview.8
+        - 0.0.12-preview.10
+        - 0.0.12-preview.11
+        - 0.0.12-preview.13
+        - 0.0.12-preview.17
+        - 0.0.12-preview.19
+        - 0.0.12-preview.20
+        - 1.0.0-preview.1
+        - 1.0.1
         - 1.1.0
         - 1.2.1
         - 1.2.5
