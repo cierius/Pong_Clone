@@ -27,12 +27,14 @@ public class Paddle_Movement : MonoBehaviour
         }
         else{
             redPaddle = Instantiate(redPaddlePrefab);
+            redPaddle.name = "Red_Paddle";
         }
         if(GameObject.Find("Blue_Paddle")){
             bluePaddle = GameObject.Find("Blue_Paddle");
         }
         else{
             bluePaddle = Instantiate(bluePaddlePrefab);
+            bluePaddle.name = "Blue_Paddle";
         }
         
         // Find ball or create one if not present.
@@ -41,6 +43,7 @@ public class Paddle_Movement : MonoBehaviour
         }
         else{
             ball = Instantiate(ballPrefab);
+            ball.name = "Ball";
         }
     }
 
