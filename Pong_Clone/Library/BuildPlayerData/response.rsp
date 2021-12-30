@@ -1,3 +1,4 @@
+-a="C:\Dev\Pong_Clone\Pong_Clone\Library\PlayerScriptAssemblies\Assembly-CSharp.dll"
 -a="C:\Dev\Pong_Clone\Pong_Clone\Library\PlayerScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll"
 -a="C:\Dev\Pong_Clone\Pong_Clone\Library\PlayerScriptAssemblies\Unity.2D.PixelPerfect.dll"
 -a="C:\Dev\Pong_Clone\Pong_Clone\Library\PlayerScriptAssemblies\UnityEngine.TestRunner.dll"

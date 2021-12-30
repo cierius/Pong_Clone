@@ -50,6 +50,7 @@ public class Paddle_Movement : MonoBehaviour
 
     void Update()
     {
+        //Keyboard input that moves the paddles - Inverse control swaps the side of which is controlled
         if(Input.GetKey(KeyCode.W) && !inverseControl || Input.GetKey(KeyCode.UpArrow) && inverseControl){
             bluePaddle.transform.position += new Vector3(0, SPEED * Time.deltaTime);
         }
@@ -63,5 +64,9 @@ public class Paddle_Movement : MonoBehaviour
         else if(Input.GetKey(KeyCode.DownArrow) && !inverseControl || Input.GetKey(KeyCode.S) && inverseControl){
             redPaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
         }
+
+        // Very messy clamping to keep the paddles inside the walls. Need to clean up.
+        bluePaddle.transform.position = new Vector3(bluePaddle.transform.position.x, Mathf.Clamp(bluePaddle.transform.position.y, GameObject.Find("Wall_Bottom").transform.position.y + 1, GameObject.Find("Wall_Top").transform.position.y - 1), 0);
+        redPaddle.transform.position = new Vector3(redPaddle.transform.position.x, Mathf.Clamp(redPaddle.transform.position.y, GameObject.Find("Wall_Bottom").transform.position.y + 1, GameObject.Find("Wall_Top").transform.position.y - 1), 0);
     }
 }
