@@ -22,26 +22,33 @@ public class Paddle_Movement : MonoBehaviour
     void Start()
     {
         // Find both of the paddles and assign them to variables for later control. Create them if they aren't present.
-        if(GameObject.Find("Red_Paddle")){
+        if(GameObject.Find("Red_Paddle"))
+        {
             redPaddle = GameObject.Find("Red_Paddle");
         }
-        else{
+        else
+        {
             redPaddle = Instantiate(redPaddlePrefab);
             redPaddle.name = "Red_Paddle";
         }
-        if(GameObject.Find("Blue_Paddle")){
+
+        if(GameObject.Find("Blue_Paddle"))
+        {
             bluePaddle = GameObject.Find("Blue_Paddle");
         }
-        else{
+        else
+        {
             bluePaddle = Instantiate(bluePaddlePrefab);
             bluePaddle.name = "Blue_Paddle";
         }
         
         // Find ball or create one if not present.
-        if(GameObject.Find("Ball")){
+        if(GameObject.Find("Ball"))
+        {
             ball = GameObject.Find("Ball");
         }
-        else{
+        else
+        {
             ball = Instantiate(ballPrefab);
             ball.name = "Ball";
         }
@@ -51,17 +58,21 @@ public class Paddle_Movement : MonoBehaviour
     void Update()
     {
         //Keyboard input that moves the paddles - Inverse control swaps the side of which is controlled
-        if(Input.GetKey(KeyCode.W) && !inverseControl || Input.GetKey(KeyCode.UpArrow) && inverseControl){
+        if(Input.GetKey(KeyCode.W) && !inverseControl || Input.GetKey(KeyCode.UpArrow) && inverseControl)
+        {
             bluePaddle.transform.position += new Vector3(0, SPEED * Time.deltaTime);
         }
-        else if(Input.GetKey(KeyCode.S) && !inverseControl || Input.GetKey(KeyCode.DownArrow) && inverseControl){
+        else if(Input.GetKey(KeyCode.S) && !inverseControl || Input.GetKey(KeyCode.DownArrow) && inverseControl)
+        {
             bluePaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
         }
 
-        if(Input.GetKey(KeyCode.UpArrow) && !inverseControl || Input.GetKey(KeyCode.W) && inverseControl){
+        if(Input.GetKey(KeyCode.UpArrow) && !inverseControl || Input.GetKey(KeyCode.W) && inverseControl)
+        {
             redPaddle.transform.position += new Vector3(0, SPEED * Time.deltaTime);
         }
-        else if(Input.GetKey(KeyCode.DownArrow) && !inverseControl || Input.GetKey(KeyCode.S) && inverseControl){
+        else if(Input.GetKey(KeyCode.DownArrow) && !inverseControl || Input.GetKey(KeyCode.S) && inverseControl)
+        {
             redPaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
         }
 
