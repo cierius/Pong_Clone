@@ -7,8 +7,9 @@ public class Paddle_Movement : MonoBehaviour
     /*
     This script controls the paddles from an empty GameObject.
     */
-
-    private const float SPEED = 5.0f;
+    
+    [SerializeField]
+    private float SPEED = 5.0f;
 
     public bool inverseControl = false;
     public GameObject redPaddlePrefab;
@@ -76,8 +77,10 @@ public class Paddle_Movement : MonoBehaviour
             redPaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
         }
 
+        Vector3 bPos = bluePaddle.transform.position;
+        Vector3 rPos = redPaddle.transform.position;
         // Very messy clamping to keep the paddles inside the walls. Need to clean up.
-        bluePaddle.transform.position = new Vector3(bluePaddle.transform.position.x, Mathf.Clamp(bluePaddle.transform.position.y, GameObject.Find("Wall_Bottom").transform.position.y + 1, GameObject.Find("Wall_Top").transform.position.y - 1), 0);
-        redPaddle.transform.position = new Vector3(redPaddle.transform.position.x, Mathf.Clamp(redPaddle.transform.position.y, GameObject.Find("Wall_Bottom").transform.position.y + 1, GameObject.Find("Wall_Top").transform.position.y - 1), 0);
+        bluePaddle.transform.position = new Vector3(bPos.x, Mathf.Clamp(bPos.y, GameObject.Find("Wall_Bottom").transform.position.y + 0.75f, GameObject.Find("Wall_Top").transform.position.y - 0.75f), 0);
+        redPaddle.transform.position = new Vector3(rPos.x, Mathf.Clamp(rPos.y, GameObject.Find("Wall_Bottom").transform.position.y + 0.75f, GameObject.Find("Wall_Top").transform.position.y - 0.75f), 0);
     }
 }
