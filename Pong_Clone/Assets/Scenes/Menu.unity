@@ -197,6 +197,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5830195270887574962, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5830195271087122465, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
       propertyPath: m_Camera
       value: 
@@ -289,22 +293,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5830195272819231772, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
-      propertyPath: m_CullTransparentMesh
-      value: 1
+    - target: {fileID: 5830195272409670101, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -25
       objectReference: {fileID: 0}
-    - target: {fileID: 5830195272819231774, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1930333181}
+    - target: {fileID: 5830195272819231761, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -200
+      objectReference: {fileID: 0}
     - target: {fileID: 6639822631703369744, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
       propertyPath: m_FirstSelected
       value: 
       objectReference: {fileID: 713926598}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
---- !u!1 &1930333181 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830195271087122466, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
-  m_PrefabInstance: {fileID: 1930333180}
-  m_PrefabAsset: {fileID: 0}

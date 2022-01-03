@@ -10,6 +10,13 @@ public class Paddle_Movement : MonoBehaviour
     
     [SerializeField]
     private float SPEED = 5.0f;
+    [SerializeField]
+    private bool singleplayer = false;
+    [SerializeField]
+    private bool multiplayer = false;
+
+    private bool pickedSide = false;
+    private bool leftSide = false;
 
     public bool inverseControl = false;
     public GameObject redPaddlePrefab;
@@ -17,7 +24,7 @@ public class Paddle_Movement : MonoBehaviour
     public GameObject ballPrefab;
     private GameObject redPaddle;
     private GameObject bluePaddle;
-    private GameObject ball;
+    private GameObject ball = null;
 
     
     void Start()
@@ -42,39 +49,38 @@ public class Paddle_Movement : MonoBehaviour
             bluePaddle = Instantiate(bluePaddlePrefab);
             bluePaddle.name = "Blue_Paddle";
         }
-        
-        // Find ball or create one if not present.
-        if(GameObject.Find("Ball"))
-        {
-            ball = GameObject.Find("Ball");
-        }
-        else
-        {
-            ball = Instantiate(ballPrefab);
-            ball.name = "Ball";
-        }
     }
 
 
     void Update()
     {
-        //Keyboard input that moves the paddles - Inverse control swaps the side of which is controlled
-        if(Input.GetKey(KeyCode.W) && !inverseControl || Input.GetKey(KeyCode.UpArrow) && inverseControl)
+        if(multiplayer)
         {
-            bluePaddle.transform.position += new Vector3(0, SPEED * Time.deltaTime);
+            Movement();
         }
-        else if(Input.GetKey(KeyCode.S) && !inverseControl || Input.GetKey(KeyCode.DownArrow) && inverseControl)
+        else if(singleplayer)
         {
-            bluePaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
-        }
+            if(!pickedSide)
+            {
+                if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+                {
+                    pickedSide = true;
+                    leftSide = true;
+                }
+                else if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+                {
+                    pickedSide = true;
+                }
+            }
+            else if(pickedSide)
+            {
+                if(ball == null)
+                {
+                    SpawnBall();
+                }
+            }
 
-        if(Input.GetKey(KeyCode.UpArrow) && !inverseControl || Input.GetKey(KeyCode.W) && inverseControl)
-        {
-            redPaddle.transform.position += new Vector3(0, SPEED * Time.deltaTime);
-        }
-        else if(Input.GetKey(KeyCode.DownArrow) && !inverseControl || Input.GetKey(KeyCode.S) && inverseControl)
-        {
-            redPaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
+            Movement();
         }
 
         Vector3 bPos = bluePaddle.transform.position;
@@ -82,5 +88,34 @@ public class Paddle_Movement : MonoBehaviour
         // Very messy clamping to keep the paddles inside the walls. Need to clean up.
         bluePaddle.transform.position = new Vector3(bPos.x, Mathf.Clamp(bPos.y, GameObject.Find("Wall_Bottom").transform.position.y + 0.75f, GameObject.Find("Wall_Top").transform.position.y - 0.75f), 0);
         redPaddle.transform.position = new Vector3(rPos.x, Mathf.Clamp(rPos.y, GameObject.Find("Wall_Bottom").transform.position.y + 0.75f, GameObject.Find("Wall_Top").transform.position.y - 0.75f), 0);
+    }
+
+
+    private void Movement()
+    {
+        //Keyboard input that moves the paddles - Inverse control swaps the side of which is controlled for local multiplayer
+        if(Input.GetKey(KeyCode.W) && leftSide || Input.GetKey(KeyCode.W) && multiplayer)
+        {
+            bluePaddle.transform.position += new Vector3(0, SPEED * Time.deltaTime);
+        }
+        else if(Input.GetKey(KeyCode.S) && leftSide || Input.GetKey(KeyCode.S) && multiplayer)
+        {
+            bluePaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
+        }
+
+        if(Input.GetKey(KeyCode.UpArrow) && !leftSide || Input.GetKey(KeyCode.UpArrow) && multiplayer)
+        {
+            redPaddle.transform.position += new Vector3(0, SPEED * Time.deltaTime);
+        }
+        else if(Input.GetKey(KeyCode.DownArrow) && !leftSide || Input.GetKey(KeyCode.DownArrow) && multiplayer)
+        {
+            redPaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
+        }
+    }
+
+    private void SpawnBall()
+    {
+        ball = Instantiate(ballPrefab);
+        ball.name = "Ball";
     }
 }
