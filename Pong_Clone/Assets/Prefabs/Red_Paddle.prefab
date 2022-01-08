@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7810126172101318667}
   - component: {fileID: 7810126172101318666}
   - component: {fileID: 935342012740356119}
+  - component: {fileID: 2908739963593336658}
   m_Layer: 0
   m_Name: Red_Paddle
   m_TagString: Untagged
@@ -109,3 +110,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2908739963593336658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810126172101318665}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ec685f3f0204d4ba511978e517a7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

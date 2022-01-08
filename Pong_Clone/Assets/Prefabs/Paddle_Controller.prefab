@@ -43,6 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f660bd8fde271a4e86b34f11ad17f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gsm: {fileID: 11400000, guid: 77270c1fc519e3e4e852e081f9184d9d, type: 2}
+  SPEED: 5
+  singleplayer: 0
+  multiplayer: 0
   inverseControl: 0
   redPaddlePrefab: {fileID: 7810126172101318665, guid: 1046d35d84496bb438ddea65f31fd86e, type: 3}
   bluePaddlePrefab: {fileID: 2346585224189933422, guid: e308759f89015154db0d347d39415472, type: 3}

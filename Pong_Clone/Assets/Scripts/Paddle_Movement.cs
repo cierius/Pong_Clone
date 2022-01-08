@@ -7,13 +7,9 @@ public class Paddle_Movement : MonoBehaviour
     /*
     This script controls the paddles from an empty GameObject.
     */
-    
+
     [SerializeField]
     private float SPEED = 5.0f;
-    [SerializeField]
-    private bool singleplayer = false;
-    [SerializeField]
-    private bool multiplayer = false;
 
     private bool pickedSide = false;
     private bool leftSide = false;
@@ -54,11 +50,28 @@ public class Paddle_Movement : MonoBehaviour
 
     void Update()
     {
-        if(multiplayer)
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Singleton.Instance.SwitchToMenu();
+        }
+
+        // Debug purposes
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnBall();
+        }
+
+        // If multiplayer the paddles can move right away then it spawns ball after 5 seconds
+        if(Singleton.Instance.curState == Singleton.State.Multi)
         {
             Movement();
+
+            if(ball == null)
+            {
+                SpawnBall();
+            }
         }
-        else if(singleplayer)
+        else if(Singleton.Instance.curState == Singleton.State.Single)
         {
             if(!pickedSide)
             {
@@ -66,10 +79,12 @@ public class Paddle_Movement : MonoBehaviour
                 {
                     pickedSide = true;
                     leftSide = true;
+                    redPaddle.GetComponent<Paddle_AI>().enabled = true;
                 }
                 else if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
                 {
                     pickedSide = true;
+                    bluePaddle.GetComponent<Paddle_AI>().enabled = true;
                 }
             }
             else if(pickedSide)
@@ -93,27 +108,27 @@ public class Paddle_Movement : MonoBehaviour
 
     private void Movement()
     {
-        //Keyboard input that moves the paddles - Inverse control swaps the side of which is controlled for local multiplayer
-        if(Input.GetKey(KeyCode.W) && leftSide || Input.GetKey(KeyCode.W) && multiplayer)
+        //Keyboard input that moves the paddles
+        if(Input.GetKey(KeyCode.W) && leftSide || Input.GetKey(KeyCode.W) && Singleton.Instance.curState == Singleton.State.Multi)
         {
             bluePaddle.transform.position += new Vector3(0, SPEED * Time.deltaTime);
         }
-        else if(Input.GetKey(KeyCode.S) && leftSide || Input.GetKey(KeyCode.S) && multiplayer)
+        else if(Input.GetKey(KeyCode.S) && leftSide || Input.GetKey(KeyCode.S) && Singleton.Instance.curState == Singleton.State.Multi)
         {
             bluePaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
         }
 
-        if(Input.GetKey(KeyCode.UpArrow) && !leftSide || Input.GetKey(KeyCode.UpArrow) && multiplayer)
+        if(Input.GetKey(KeyCode.UpArrow) && !leftSide || Input.GetKey(KeyCode.UpArrow) && Singleton.Instance.curState == Singleton.State.Multi)
         {
             redPaddle.transform.position += new Vector3(0, SPEED * Time.deltaTime);
         }
-        else if(Input.GetKey(KeyCode.DownArrow) && !leftSide || Input.GetKey(KeyCode.DownArrow) && multiplayer)
+        else if(Input.GetKey(KeyCode.DownArrow) && !leftSide || Input.GetKey(KeyCode.DownArrow) && Singleton.Instance.curState == Singleton.State.Multi)
         {
             redPaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
         }
     }
 
-    private void SpawnBall()
+    public void SpawnBall()
     {
         ball = Instantiate(ballPrefab);
         ball.name = "Ball";
