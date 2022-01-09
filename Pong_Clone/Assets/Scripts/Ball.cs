@@ -45,14 +45,16 @@ public class Ball : MonoBehaviour
         Debug.Log(col.gameObject.name);
         if(col.gameObject.name == "Wall_Left")
         {
-            scoreNum[0]++;
-            scoreText[0].text = scoreNum[0].ToString();
+            GameObject.Find("Score").GetComponent<Score_Animation>().setScored(true);
+            scoreNum[1]++;
+            scoreText[1].text = scoreNum[1].ToString();
             Destroy(this.gameObject);
         }
         else if(col.gameObject.name == "Wall_Right")
         {
-            scoreNum[1]++;
-            scoreText[1].text = scoreNum[1].ToString();
+            GameObject.Find("Score").GetComponent<Score_Animation>().setScored(true);
+            scoreNum[0]++;
+            scoreText[0].text = scoreNum[0].ToString();
             Destroy(this.gameObject);
         }
     }

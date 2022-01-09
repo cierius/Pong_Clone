@@ -22,6 +22,10 @@ public class Paddle_Movement : MonoBehaviour
     private GameObject bluePaddle;
     private GameObject ball = null;
 
+    private GameObject[] tutorialText = new GameObject[3];
+    private Color[] textColor = new Color[3];
+    private bool fadeText = false;
+
     
     void Start()
     {
@@ -45,6 +49,16 @@ public class Paddle_Movement : MonoBehaviour
             bluePaddle = Instantiate(bluePaddlePrefab);
             bluePaddle.name = "Blue_Paddle";
         }
+
+        if(Singleton.Instance.curState == Singleton.State.Single)
+        {
+            tutorialText[0] = GameObject.Find("Canvas/Text_Left");
+            tutorialText[1] = GameObject.Find("Canvas/Text_Middle");
+            tutorialText[2] = GameObject.Find("Canvas/Text_Right");
+            textColor[0] = tutorialText[0].GetComponent<CanvasRenderer>().GetColor();
+            textColor[1] = tutorialText[1].GetComponent<CanvasRenderer>().GetColor();
+            textColor[2] = tutorialText[2].GetComponent<CanvasRenderer>().GetColor();
+        }
     }
 
 
@@ -59,6 +73,14 @@ public class Paddle_Movement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             SpawnBall();
+        }
+
+        if(Singleton.Instance.curState == Singleton.State.Menu)
+        {
+            if(ball == null)
+            {
+                SpawnBall();
+            }
         }
 
         // If multiplayer the paddles can move right away then it spawns ball after 5 seconds
@@ -92,6 +114,17 @@ public class Paddle_Movement : MonoBehaviour
                 if(ball == null)
                 {
                     SpawnBall();
+                }
+                
+                if(!fadeText)
+                {
+                    textColor[0].a = Mathf.Lerp(textColor[0].a, 0, 2.0f * Time.deltaTime);
+                    textColor[1].a = Mathf.Lerp(textColor[1].a, 0, 2.0f * Time.deltaTime);
+                    textColor[2].a = Mathf.Lerp(textColor[2].a, 0, 2.0f * Time.deltaTime);
+
+                    tutorialText[0].GetComponent<CanvasRenderer>().SetColor(textColor[0]);
+                    tutorialText[1].GetComponent<CanvasRenderer>().SetColor(textColor[1]);
+                    tutorialText[2].GetComponent<CanvasRenderer>().SetColor(textColor[2]);
                 }
             }
 
