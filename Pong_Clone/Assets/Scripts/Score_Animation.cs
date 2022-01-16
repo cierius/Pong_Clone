@@ -20,6 +20,7 @@ public class Score_Animation : MonoBehaviour
 
     private void Awake()
     {
+        // Starting position for the scoreboard = above the wall where it spawns at
         home = transform.position;
     }
 
@@ -47,7 +48,7 @@ public class Score_Animation : MonoBehaviour
     }
 
     // if true will cause the score to come down, flase brings it back up
-    public void setScored(bool s)
+    public void SetScored(bool s)
     {
         hasScored = s;
     }

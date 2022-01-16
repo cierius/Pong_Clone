@@ -13,6 +13,8 @@ public class Ball : MonoBehaviour
     private Rigidbody2D ballRB;
     private GameObject ball;
     
+
+    // Finds all the references to game objects before Start() is called
     void Awake()
     {
         ballRB = gameObject.GetComponent<Rigidbody2D>();
@@ -40,19 +42,20 @@ public class Ball : MonoBehaviour
     }
 
 
+    // Checks to see what the ball is colliding with
     void OnCollisionEnter2D(Collision2D col)
     {
         Debug.Log(col.gameObject.name);
         if(col.gameObject.name == "Wall_Left")
         {
-            GameObject.Find("Score").GetComponent<Score_Animation>().setScored(true);
+            GameObject.Find("Score").GetComponent<Score_Animation>().SetScored(true);
             scoreNum[1]++;
             scoreText[1].text = scoreNum[1].ToString();
             Destroy(this.gameObject);
         }
         else if(col.gameObject.name == "Wall_Right")
         {
-            GameObject.Find("Score").GetComponent<Score_Animation>().setScored(true);
+            GameObject.Find("Score").GetComponent<Score_Animation>().SetScored(true);
             scoreNum[0]++;
             scoreText[0].text = scoreNum[0].ToString();
             Destroy(this.gameObject);

@@ -22,8 +22,8 @@ public class Paddle_Movement : MonoBehaviour
     private GameObject bluePaddle;
     private GameObject ball = null;
 
-    private GameObject[] tutorialText = new GameObject[3];
-    private Color[] textColor = new Color[3];
+    private GameObject[] tutorialText;
+    private Color[] textColor;
     private bool fadeText = false;
 
     
@@ -50,31 +50,41 @@ public class Paddle_Movement : MonoBehaviour
             bluePaddle.name = "Blue_Paddle";
         }
 
+        // If Singleplayer assign the tutorial text
         if(Singleton.Instance.curState == Singleton.State.Single)
         {
+            textColor = new Color[3];
+            tutorialText = new GameObject[3];
+
             tutorialText[0] = GameObject.Find("Canvas/Text_Left");
             tutorialText[1] = GameObject.Find("Canvas/Text_Middle");
             tutorialText[2] = GameObject.Find("Canvas/Text_Right");
+
             textColor[0] = tutorialText[0].GetComponent<CanvasRenderer>().GetColor();
             textColor[1] = tutorialText[1].GetComponent<CanvasRenderer>().GetColor();
             textColor[2] = tutorialText[2].GetComponent<CanvasRenderer>().GetColor();
+        }
+
+        // Spawns the ball in the main menu for the background "animation"
+        if(Singleton.Instance.curState == Singleton.State.Menu)
+        {
+            if(ball == null)
+            {
+                SpawnBall();
+            }
         }
     }
 
 
     void Update()
     {
+        // Mostly for debug purposes, will get changed to a pause menu at some point
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Singleton.Instance.SwitchToMenu();
         }
 
-        // Debug purposes
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnBall();
-        }
-
+        // Respawns the ball in the main menu for the background "animation" if it scores
         if(Singleton.Instance.curState == Singleton.State.Menu)
         {
             if(ball == null)

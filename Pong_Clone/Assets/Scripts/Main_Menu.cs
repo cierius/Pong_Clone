@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Main_Menu : MonoBehaviour
 {
-    // Main menu button manager
+    // Simple Main Menu button manager
 
 
     public void SinglePlayer()
