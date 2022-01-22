@@ -51,6 +51,7 @@ public class Ball : MonoBehaviour
             GameObject.Find("Score").GetComponent<Score_Animation>().SetScored(true);
             scoreNum[1]++;
             scoreText[1].text = scoreNum[1].ToString();
+            GameObject.Find("Paddle_Controller").GetComponent<Paddle_Movement>().BallDeath();
             Destroy(this.gameObject);
         }
         else if(col.gameObject.name == "Wall_Right")
@@ -58,6 +59,7 @@ public class Ball : MonoBehaviour
             GameObject.Find("Score").GetComponent<Score_Animation>().SetScored(true);
             scoreNum[0]++;
             scoreText[0].text = scoreNum[0].ToString();
+            GameObject.Find("Paddle_Controller").GetComponent<Paddle_Movement>().BallDeath();
             Destroy(this.gameObject);
         }
     }

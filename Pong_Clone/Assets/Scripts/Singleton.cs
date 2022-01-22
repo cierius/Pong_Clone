@@ -17,6 +17,10 @@ public class Singleton : MonoBehaviour
 
     public State curState = State.Menu;
 
+    [SerializeField] private AudioSource musicObject;
+    [SerializeField] private AudioClip music;
+    private bool musicStarted = false;
+
     // Singleton pattern - only one instance of this object
     // Checks to see if there are multiple singleton gameobjects and if the Instance is set to itself
     private void Awake()
@@ -54,4 +58,19 @@ public class Singleton : MonoBehaviour
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
+    public void EndGame()
+    {
+        print("End Game has occured - Returning to menu");
+
+        SwitchToMenu();
+    }
+
+    public void StartMusic()
+    {
+        if(!musicStarted)
+        {
+            musicObject.PlayOneShot(music);
+            musicStarted = true;
+        }
+    }
 }

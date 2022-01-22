@@ -5,6 +5,7 @@ using UnityEngine;
 public class Menu_Camera_Controller : MonoBehaviour
 {
     
+    [SerializeField] bool shouldBlur = false;
     private Camera mainCam;
     private Camera blurCam;
     
@@ -32,8 +33,11 @@ public class Menu_Camera_Controller : MonoBehaviour
 
     void OnPreRender()
     {
+        if(shouldBlur)
+        {
         blurCam.GetComponent<Blur_Camera>().PreRenderCall();
         blurCam.Render();
         blurCam.GetComponent<Blur_Camera>().RenderCall();
+        }  
     }
 }

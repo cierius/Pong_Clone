@@ -2,10 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Ball
-    - Blur_Camera
     - Main_Menu
-    - Menu_Blur
-    - Menu_Camera_Controller
     - Paddle_AI
     - Paddle_Movement
     - Score_Animation
@@ -68,13 +65,25 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1620}
+      Script: {instanceID: 1460}
     - Class: 114
-      Script: {instanceID: 1978}
+      Script: {instanceID: 1630}
     - Class: 114
-      Script: {instanceID: 2282}
+      Script: {instanceID: 1872}
     - Class: 114
-      Script: {instanceID: 5314}
+      Script: {instanceID: 1988}
+    - Class: 114
+      Script: {instanceID: 2266}
+    - Class: 114
+      Script: {instanceID: 2292}
+    - Class: 114
+      Script: {instanceID: 2676}
+    - Class: 114
+      Script: {instanceID: 2844}
+    - Class: 114
+      Script: {instanceID: 3080}
+    - Class: 114
+      Script: {instanceID: 5326}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -86,6 +95,12 @@ ScriptsOnlyBuild:
     - Class: 212
       Script: {instanceID: 0}
     - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     Assets/Scenes/Main_Game.unity:
     - Class: 1
@@ -119,13 +134,13 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1620}
+      Script: {instanceID: 1630}
     - Class: 114
-      Script: {instanceID: 1978}
+      Script: {instanceID: 1988}
     - Class: 114
-      Script: {instanceID: 2282}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 5314}
+      Script: {instanceID: 5326}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -151,10 +166,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 28
       Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
-      Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
     - Class: 50
@@ -164,8 +175,6 @@ ScriptsOnlyBuild:
     - Class: 61
       Script: {instanceID: 0}
     - Class: 62
-      Script: {instanceID: 0}
-    - Class: 64
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -178,35 +187,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1460}
     - Class: 114
-      Script: {instanceID: 1526}
+      Script: {instanceID: 1536}
     - Class: 114
-      Script: {instanceID: 1620}
+      Script: {instanceID: 1630}
     - Class: 114
-      Script: {instanceID: 1862}
+      Script: {instanceID: 1872}
     - Class: 114
-      Script: {instanceID: 1978}
+      Script: {instanceID: 1988}
     - Class: 114
-      Script: {instanceID: 2182}
+      Script: {instanceID: 2192}
     - Class: 114
-      Script: {instanceID: 2256}
+      Script: {instanceID: 2266}
     - Class: 114
-      Script: {instanceID: 2282}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2676}
     - Class: 114
-      Script: {instanceID: 2834}
+      Script: {instanceID: 2844}
     - Class: 114
-      Script: {instanceID: 3070}
+      Script: {instanceID: 3080}
     - Class: 114
-      Script: {instanceID: 3422}
+      Script: {instanceID: 3432}
     - Class: 114
-      Script: {instanceID: 3454}
-    - Class: 114
-      Script: {instanceID: 5314}
-    - Class: 114
-      Script: {instanceID: 22228}
-    - Class: 114
-      Script: {instanceID: 22806}
+      Script: {instanceID: 5326}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -259,21 +262,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1460}
     - Class: 114
-      Script: {instanceID: 1620}
+      Script: {instanceID: 1630}
     - Class: 114
-      Script: {instanceID: 1978}
+      Script: {instanceID: 1872}
     - Class: 114
-      Script: {instanceID: 2256}
+      Script: {instanceID: 1988}
     - Class: 114
-      Script: {instanceID: 2282}
+      Script: {instanceID: 2266}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2834}
+      Script: {instanceID: 2676}
     - Class: 114
-      Script: {instanceID: 3070}
+      Script: {instanceID: 2844}
     - Class: 114
-      Script: {instanceID: 5314}
+      Script: {instanceID: 3080}
+    - Class: 114
+      Script: {instanceID: 5326}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -325,7 +330,7 @@ ScriptsOnlyBuild:
     className: SpriteSkin
   - hash:
       serializedVersion: 2
-      Hash: e191287ffd8b8738130ff7f7d57aa6de
+      Hash: 71c8cc4a6834ac64248c7585ecdc76da
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Paddle_Movement
@@ -601,6 +606,12 @@ ScriptsOnlyBuild:
     className: Outline
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Blur_Camera
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -847,13 +858,7 @@ ScriptsOnlyBuild:
     className: FabrikSolver2D
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Blur_Camera
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: bb33b35b4d014bae7d8b2cf1d11947c4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Menu_Camera_Controller

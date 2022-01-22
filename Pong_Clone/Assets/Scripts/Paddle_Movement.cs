@@ -5,26 +5,35 @@ using UnityEngine;
 public class Paddle_Movement : MonoBehaviour
 {
     /*
-    This script controls the paddles from an empty GameObject.
+    This script controls the paddles from an empty GameObject using player input or enabling paddle_ai on said paddle
     */
 
-    [SerializeField]
-    private float SPEED = 5.0f;
+    private const float SPEED = 5.0f;
 
+    // Single player variables
     private bool pickedSide = false;
     private bool leftSide = false;
 
-    public bool inverseControl = false;
+    // Prefabs that will be loaded to the game at runtime
     public GameObject redPaddlePrefab;
     public GameObject bluePaddlePrefab;
     public GameObject ballPrefab;
+
+    // Declaration of references to game objects
     private GameObject redPaddle;
     private GameObject bluePaddle;
     private GameObject ball = null;
 
+    // Ball spawning variables
+    private bool ballSpawned = false;
+    [SerializeField] float spawnDelay = 2.5f;
+
+    // Single player and multiplayer text variables
     private GameObject[] tutorialText;
     private Color[] textColor;
     private bool fadeText = false;
+
+    private bool gameStarted = false;
 
     
     void Start()
@@ -64,6 +73,18 @@ public class Paddle_Movement : MonoBehaviour
             textColor[1] = tutorialText[1].GetComponent<CanvasRenderer>().GetColor();
             textColor[2] = tutorialText[2].GetComponent<CanvasRenderer>().GetColor();
         }
+        // Assign multiplayer text variables
+        else if(Singleton.Instance.curState == Singleton.State.Multi)
+        {
+            textColor = new Color[2];
+            tutorialText = new GameObject[2];
+
+            tutorialText[0] = GameObject.Find("Canvas/Text_Left");
+            tutorialText[1] = GameObject.Find("Canvas/Text_Right");
+
+            textColor[0] = tutorialText[0].GetComponent<CanvasRenderer>().GetColor();
+            textColor[1] = tutorialText[1].GetComponent<CanvasRenderer>().GetColor();
+        }
 
         // Spawns the ball in the main menu for the background "animation"
         if(Singleton.Instance.curState == Singleton.State.Menu)
@@ -78,31 +99,45 @@ public class Paddle_Movement : MonoBehaviour
 
     void Update()
     {
-        // Mostly for debug purposes, will get changed to a pause menu at some point
+        // Mostly for debug purposes, might get changed to a pause menu at some point
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Singleton.Instance.SwitchToMenu();
         }
 
-        // Respawns the ball in the main menu for the background "animation" if it scores
+        // Respawns the ball in the main menu for the background "animation"
         if(Singleton.Instance.curState == Singleton.State.Menu)
         {
-            if(ball == null)
+            if(ball == null && !ballSpawned)
             {
                 SpawnBall();
+                ballSpawned = true;
             }
         }
 
-        // If multiplayer the paddles can move right away then it spawns ball after 5 seconds
-        if(Singleton.Instance.curState == Singleton.State.Multi)
+        // If multiplayer the paddles can move right away then it spawns ball after a defined spawn delay
+        else if(Singleton.Instance.curState == Singleton.State.Multi)
         {
             Movement();
 
-            if(ball == null)
+            if(ball == null && !ballSpawned)
             {
-                SpawnBall();
+                Invoke("SpawnBall", spawnDelay);
+                ballSpawned = true;
             }
+            else if(ball != null && !fadeText) // Checks to see if the ball has spawned and if the text has been faded yet
+            {
+                    textColor[0].a = Mathf.Lerp(textColor[0].a, 0, 2.0f * Time.deltaTime);
+                    textColor[1].a = Mathf.Lerp(textColor[1].a, 0, 2.0f * Time.deltaTime);
+
+                    tutorialText[0].GetComponent<CanvasRenderer>().SetColor(textColor[0]);
+                    tutorialText[1].GetComponent<CanvasRenderer>().SetColor(textColor[1]);
+
+                    StartGame();
+            }
+
         }
+        // If singleplayer then wait for player to choose side then spawn ball after a delay and fade the text
         else if(Singleton.Instance.curState == Singleton.State.Single)
         {
             if(!pickedSide)
@@ -121,9 +156,10 @@ public class Paddle_Movement : MonoBehaviour
             }
             else if(pickedSide)
             {
-                if(ball == null)
+                if(ball == null && !ballSpawned)
                 {
-                    SpawnBall();
+                    Invoke("SpawnBall", spawnDelay);
+                    ballSpawned = true;
                 }
                 
                 if(!fadeText)
@@ -135,17 +171,15 @@ public class Paddle_Movement : MonoBehaviour
                     tutorialText[0].GetComponent<CanvasRenderer>().SetColor(textColor[0]);
                     tutorialText[1].GetComponent<CanvasRenderer>().SetColor(textColor[1]);
                     tutorialText[2].GetComponent<CanvasRenderer>().SetColor(textColor[2]);
+
+                    StartGame();
                 }
             }
 
             Movement();
         }
 
-        Vector3 bPos = bluePaddle.transform.position;
-        Vector3 rPos = redPaddle.transform.position;
-        // Very messy clamping to keep the paddles inside the walls. Need to clean up.
-        bluePaddle.transform.position = new Vector3(bPos.x, Mathf.Clamp(bPos.y, GameObject.Find("Wall_Bottom").transform.position.y + 0.75f, GameObject.Find("Wall_Top").transform.position.y - 0.75f), 0);
-        redPaddle.transform.position = new Vector3(rPos.x, Mathf.Clamp(rPos.y, GameObject.Find("Wall_Bottom").transform.position.y + 0.75f, GameObject.Find("Wall_Top").transform.position.y - 0.75f), 0);
+       
     }
 
 
@@ -169,6 +203,13 @@ public class Paddle_Movement : MonoBehaviour
         {
             redPaddle.transform.position -= new Vector3(0, SPEED * Time.deltaTime);
         }
+
+        Vector3 bPos = bluePaddle.transform.position;
+        Vector3 rPos = redPaddle.transform.position;
+
+        // Clamp that keeps the paddles inside of the boundary walls
+        bluePaddle.transform.position = new Vector3(bPos.x, Mathf.Clamp(bPos.y, GameObject.Find("Wall_Bottom").transform.position.y + 0.75f, GameObject.Find("Wall_Top").transform.position.y - 0.75f), 0);
+        redPaddle.transform.position = new Vector3(rPos.x, Mathf.Clamp(rPos.y, GameObject.Find("Wall_Bottom").transform.position.y + 0.75f, GameObject.Find("Wall_Top").transform.position.y - 0.75f), 0);
     }
 
     public void SpawnBall()
@@ -176,4 +217,20 @@ public class Paddle_Movement : MonoBehaviour
         ball = Instantiate(ballPrefab);
         ball.name = "Ball";
     }
+
+    public void BallDeath()
+    {
+        ballSpawned = false;
+    }
+
+    private void StartGame()
+    {
+        gameStarted = true;
+
+        GameObject timerText = GameObject.Find("Game_Timer");
+        timerText.GetComponent<Game_Timer>().countDown = true;
+
+        Singleton.Instance.StartMusic();
+    }
+
 }
