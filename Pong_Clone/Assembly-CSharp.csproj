@@ -53,8 +53,8 @@
      <Compile Include="Assets\Scripts\Main_Menu.cs" />
      <Compile Include="Assets\Scripts\Paddle_AI.cs" />
      <Compile Include="Assets\Scripts\Menu_Blur.cs" />
-     <Compile Include="Assets\Scripts\Score_Animation.cs" />
      <Compile Include="Assets\Scripts\Blur_Camera.cs" />
+     <Compile Include="Assets\Scripts\Score_Animation.cs" />
      <Compile Include="Assets\Scripts\Menu_Camera_Controller.cs" />
      <None Include="Assets\Materials\GaussianBlur.shader" />
  <Reference Include="UnityEngine">
