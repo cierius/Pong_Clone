@@ -174,3 +174,6 @@ MonoBehaviour:
   curState: 0
   musicObject: {fileID: 3820723985836292378}
   music: {fileID: 8300000, guid: f0c6ea40425a97049b81c157feeba95a, type: 3}
+  musicMute: 1
+  musicVol: 1
+  ballRespawning: 1

@@ -12,25 +12,27 @@ public class Paddle_AI : MonoBehaviour
     void Update()
     {
         // Finds the ball in the scene
-        if(ball == null)
+        if(ball == null && Singleton.Instance.ballRespawning == false)
         {
             ball = GameObject.Find("Ball").transform;
         } 
-
-        Vector2 pos = transform.position;
-
-        float dist = Vector2.Distance(new Vector2(pos.x, 0), new Vector2(ball.transform.position.x, 0));
-        
-        // Moves the paddle if the ball is within roughly about half of the screen, else the paddles doesn't move
-        if(dist <= 6.0f)
+        else if(ball != null)
         {
-            if(ball.position.y > pos.y + 0.5f)
+            Vector2 pos = transform.position;
+
+            float dist = Vector2.Distance(new Vector2(pos.x, 0), new Vector2(ball.transform.position.x, 0));
+            
+            // Moves the paddle if the ball is within roughly about half of the screen, else the paddles doesn't move
+            if(dist <= 6.0f)
             {
-                MoveUp();
-            }
-            else if(ball.position.y < pos.y - 0.5f)
-            {
-                MoveDown();
+                if(ball.position.y > pos.y + 0.5f)
+                {
+                    MoveUp();
+                }
+                else if(ball.position.y < pos.y - 0.5f)
+                {
+                    MoveDown();
+                }
             }
         }
     }
