@@ -5,14 +5,10 @@ using UnityEngine;
 public class Game_Timer : MonoBehaviour
 {
     [SerializeField] private GameObject timerText;
-    private float timeLeft = 121; // Default is 2 min to go with music
+    public float timeLeft = 121; // Default is 121sec to go with music
     public bool countDown = false;
+    public bool scoreScreen = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -21,12 +17,16 @@ public class Game_Timer : MonoBehaviour
         {
             if(timeLeft > 0f)
             {
-                timeLeft -= 1 * Time.deltaTime;
+                timeLeft -= Time.deltaTime;
                 timerText.GetComponent<TextMesh>().text = Mathf.Round(timeLeft).ToString();
             }
-            else
+            else if(scoreScreen)
             {
                 Singleton.Instance.EndGame();
+            }
+            else 
+            {
+                Singleton.Instance.ShowScoreboard();
             }
         }
     }

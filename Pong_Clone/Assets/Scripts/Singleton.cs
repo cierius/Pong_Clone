@@ -9,7 +9,7 @@ public class Singleton : MonoBehaviour
     public static Singleton Instance { get; private set; } = null;
 
     // Game states
-    public enum State { Menu, Single, Multi };
+    public enum State { Menu, Single, Multi, Score };
     public State curState = State.Menu; // Default state is menu
 
     // Audio variables
@@ -57,6 +57,52 @@ public class Singleton : MonoBehaviour
         print("End Game has occured - Returning to menu");
 
         SwitchToMenu();
+    }
+
+    //TODO Comment this function
+    public void ShowScoreboard()
+    {
+        Instance.curState = State.Score;
+
+        int[] scores = new int[2] {int.Parse(GameObject.Find("Score/Left").GetComponent<TextMesh>().text), int.Parse(GameObject.Find("Score/Right").GetComponent<TextMesh>().text)};
+        
+        var scoreboard = GameObject.Find("Score_Screen");
+        scoreboard.GetComponent<SpriteRenderer>().enabled = true;
+        MeshRenderer[] childrenMesh = scoreboard.GetComponentsInChildren<MeshRenderer>();
+        foreach(MeshRenderer m in childrenMesh)
+        {
+            m.enabled = true;
+        }
+
+        GameObject.Find("Score_Screen/Blue_Score_Num").GetComponent<TextMesh>().text = scores[0].ToString();
+        GameObject.Find("Score_Screen/Red_Score_Num").GetComponent<TextMesh>().text = scores[1].ToString();
+
+        var timer = GameObject.Find("Game_Timer").GetComponent<Game_Timer>();
+        timer.timeLeft = 15;
+        timer.countDown = true;
+        timer.scoreScreen = true;
+
+        
+        if(scores[0] > scores[1])
+        {
+            GameObject.Find("Score_Screen/Winner_Text").GetComponent<TextMesh>().text = "Blue Paddle Wins!";
+        }
+        else if(scores[0] < scores[1])
+        {
+            GameObject.Find("Score_Screen/Winner_Text").GetComponent<TextMesh>().text = "Red Paddle Wins!";
+        }
+        else
+        {
+            GameObject.Find("Score_Screen/Winner_Text").GetComponent<TextMesh>().text = "Tie!";
+        }
+
+        GameObject.Find("Score").GetComponent<Score_Animation>().ReverseScore();
+        GameObject.Find("Score").GetComponent<Score_Animation>().scoreAble = false;
+
+        GameObject.Find("Red_Paddle").GetComponent<Paddle_AI>().enabled = true;
+        GameObject.Find("Blue_Paddle").GetComponent<Paddle_AI>().enabled = true;
+        GameObject.Find("Red_Paddle").GetComponent<Paddle_Movement>().enabled = false;
+        GameObject.Find("Blue_Paddle").GetComponent<Paddle_Movement>().enabled = false;
     }
 
     // Janky music function for the time being

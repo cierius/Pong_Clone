@@ -13,6 +13,7 @@ public class Score_Animation : MonoBehaviour
     [SerializeField]
     private float lerpSpeed = 5.0f;
     private bool hasScored = false;
+    public bool scoreAble = true;
     private float scoreTimer = 0;
     
     [SerializeField]
@@ -41,7 +42,7 @@ public class Score_Animation : MonoBehaviour
         }
     }
 
-    private void ReverseScore()
+    public void ReverseScore()
     {
         pos = transform.position;
         transform.position = new Vector2(pos.x, Mathf.SmoothStep(pos.y, home.y, lerpSpeed));
@@ -50,7 +51,10 @@ public class Score_Animation : MonoBehaviour
     // if true will cause the score to come down, flase brings it back up
     public void SetScored(bool s)
     {
-        hasScored = s;
+        if(scoreAble)
+        {
+            hasScored = s;
+        }
     }
 
     private void Update()
