@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour
     */
     
 
-    private const int SPEED = 5;
+    private const int SPEED = 8;
 
     // Score board variables
     private TextMesh[] scoreText = new TextMesh[2];

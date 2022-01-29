@@ -590,9 +590,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 844431126656255067, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 254
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473397238286082674, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473397238286082674, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473397238286082674, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769317889285651323, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769317889285651323, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548042196332412045, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548042196332412045, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548042196332412045, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5830195270887574962, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -174
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 5830195271087122464, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -692,7 +728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5830195271087122478, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5830195271087122478, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -708,14 +744,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5830195272409670101, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -174.00002
+      value: -120.00001
       objectReference: {fileID: 0}
     - target: {fileID: 5830195272819231761, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -174.00002
+      value: -120.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 9111921745113481613, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: volText
+      value: 
+      objectReference: {fileID: 2085770480}
+    - target: {fileID: 9111921745113481613, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: musicVol
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9111921745113481613, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+      propertyPath: volSlider
+      value: 
+      objectReference: {fileID: 1930333181}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+--- !u!114 &1930333181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1473397238286082674, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+  m_PrefabInstance: {fileID: 1930333180}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1974120849
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,6 +902,17 @@ Transform:
   m_Father: {fileID: 1974120850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2085770480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3564642678333406694, guid: 63bdfe26af0e50a419f93b6bfc155d67, type: 3}
+  m_PrefabInstance: {fileID: 1930333180}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5277276613637593098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -850,6 +920,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5277276613670800290, guid: 20be54813e88821448567334df7d57c1, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 8300000, guid: 087ca76518f3f2940951a8310dca9228, type: 3}
+    - target: {fileID: 5277276613670800290, guid: 20be54813e88821448567334df7d57c1, type: 3}
+      propertyPath: musicVol
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5277276613670800290, guid: 20be54813e88821448567334df7d57c1, type: 3}
+      propertyPath: musicMute
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5277276613670800291, guid: 20be54813e88821448567334df7d57c1, type: 3}
       propertyPath: m_RootOrder
       value: 2

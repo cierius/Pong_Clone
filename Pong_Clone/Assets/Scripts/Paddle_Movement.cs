@@ -33,8 +33,6 @@ public class Paddle_Movement : MonoBehaviour
     private Color[] textColor;
     private bool fadeText = false;
 
-    private bool gameStarted = false;
-
     
     void Start()
     {
@@ -103,6 +101,7 @@ public class Paddle_Movement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Singleton.Instance.SwitchToMenu();
+            Singleton.Instance.StopMusic();
         }
 
         // Respawns the ball in the main menu for the background "animation"
@@ -225,8 +224,6 @@ public class Paddle_Movement : MonoBehaviour
 
     private void StartGame()
     {
-        gameStarted = true;
-
         GameObject timerText = GameObject.Find("Game_Timer");
         timerText.GetComponent<Game_Timer>().countDown = true;
 

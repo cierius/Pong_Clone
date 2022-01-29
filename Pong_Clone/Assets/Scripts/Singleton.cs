@@ -120,4 +120,9 @@ public class Singleton : MonoBehaviour
             musicStarted = true;
         }
     }
+
+    public void StopMusic()
+    {
+        musicObject.Stop();
+    }
 }
